@@ -25,7 +25,7 @@ public class LibraryManagementReactApplication {
 		return args -> {
 			AggregateReference<Member, Integer> lc = AggregateReference.to(members.save(new Member("Lawrence", "Cuenco")).getMemberid());
 			AggregateReference<Book, Integer> book = AggregateReference.to(books.save(new Book("The Very Hungry Caterpillar", "It's about a hungry caterpillar.", 1969)).getBookid());
-			rentals.save(new Rental(lc, book, 2));
+			rentals.save(new Rental(lc, book));
 		};
 	}
 }

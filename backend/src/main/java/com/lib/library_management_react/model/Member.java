@@ -14,16 +14,10 @@ public class Member {
     private String lastName;
     private LocalDateTime dateOfMembership;
 
-    public Member(String fname, String lname) {
-        this.firstName = fname;
-        this.lastName = lname;
+    public Member(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.dateOfMembership = LocalDateTime.now();
-    }
-
-    public Member(String fname, String lname, LocalDateTime DOM) {
-        this.firstName = fname;
-        this.lastName = lname;
-        this.dateOfMembership = DOM;
     }
 
     public int getMemberid() {

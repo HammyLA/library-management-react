@@ -8,6 +8,8 @@ import org.springframework.data.relational.core.mapping.Table;
 @Table("Rental")
 public class Rental {
     
+    private static final int WEEKS_DUE = 2;
+
     @Id
     private int rentalid;
     private AggregateReference<Member, Integer> member;
@@ -15,11 +17,11 @@ public class Rental {
     private LocalDateTime dayOfRental;
     private LocalDateTime dueDate;
 
-    public Rental(AggregateReference<Member, Integer> member, AggregateReference<Book, Integer> book, int weeksTilDue) {
+    public Rental(AggregateReference<Member, Integer> member, AggregateReference<Book, Integer> book) {
         this.member = member;
         this.book = book;
         this.dayOfRental = LocalDateTime.now();
-        this.dueDate = LocalDateTime.now().plusWeeks(weeksTilDue);
+        this.dueDate = LocalDateTime.now().plusWeeks(WEEKS_DUE);
     }
 
     public int getRentalid() {

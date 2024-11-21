@@ -26,3 +26,4 @@ replay_pid*
 # Application properties (consider adding)
 application.properties
 application-*.properties
+target/classes/application.properties
