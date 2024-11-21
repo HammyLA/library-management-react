@@ -4,9 +4,14 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.jdbc.core.mapping.AggregateReference;
 
 import com.lib.library_management_react.model.Book;
+import com.lib.library_management_react.model.Member;
+import com.lib.library_management_react.model.Rental;
 import com.lib.library_management_react.repository.BookRepository;
+import com.lib.library_management_react.repository.MemberRepository;
+import com.lib.library_management_react.repository.RentalRepository;
 
 @SpringBootApplication
 public class LibraryManagementReactApplication {
@@ -16,9 +21,11 @@ public class LibraryManagementReactApplication {
 	}
 
 	@Bean
-	CommandLineRunner commandLineRunner(BookRepository books) {
+	CommandLineRunner commandLineRunner(BookRepository books, MemberRepository members, RentalRepository rentals) {
 		return args -> {
-			books.save(new Book("The Cat In The Hat", "It's the Dr. Seuss Book about a cat in a hat and he rhymes :D", 1957));
+			AggregateReference<Member, Integer> lc = AggregateReference.to(members.save(new Member("Lawrence", "Cuenco")).getMemberid());
+			AggregateReference<Book, Integer> book = AggregateReference.to(books.save(new Book("The Very Hungry Caterpillar", "It's about a hungry caterpillar.", 1969)).getBookid());
+			rentals.save(new Rental(lc, book, 2));
 		};
 	}
 }

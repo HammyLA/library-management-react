@@ -1,5 +1,7 @@
 /Users/hammy/Projects/library-management-react/src/main/java/com/lib/library_management_react/LibraryManagementReactApplication.java
-/Users/hammy/Projects/library-management-react/src/main/java/com/lib/library_management_react/controller/TutorialController.java
-/Users/hammy/Projects/library-management-react/src/main/java/com/lib/library_management_react/model/Tutorial.java
-/Users/hammy/Projects/library-management-react/src/main/java/com/lib/library_management_react/repository/JdbcTutorialRepository.java
-/Users/hammy/Projects/library-management-react/src/main/java/com/lib/library_management_react/repository/TutorialRepository.java
+/Users/hammy/Projects/library-management-react/src/main/java/com/lib/library_management_react/model/Book.java
+/Users/hammy/Projects/library-management-react/src/main/java/com/lib/library_management_react/model/Member.java
+/Users/hammy/Projects/library-management-react/src/main/java/com/lib/library_management_react/model/Rental.java
+/Users/hammy/Projects/library-management-react/src/main/java/com/lib/library_management_react/repository/BookRepository.java
+/Users/hammy/Projects/library-management-react/src/main/java/com/lib/library_management_react/repository/MemberRepository.java
+/Users/hammy/Projects/library-management-react/src/main/java/com/lib/library_management_react/repository/RentalRepository.java

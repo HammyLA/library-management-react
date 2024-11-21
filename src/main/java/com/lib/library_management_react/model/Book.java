@@ -1,7 +1,9 @@
 package com.lib.library_management_react.model;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
 
+@Table("Book")
 public class Book {
 
     @Id
