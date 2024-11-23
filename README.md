@@ -26,10 +26,14 @@ Look up tutorials for installation if you are having trouble.
 Backend
 1. go to target/classes/application.properties, if not included create the application.properties file
 2. The file should be in this format utilizing the location of your database server (this project uses Aiven to source its MySQL database)
-spring.application.name=library-management-react
-spring.datasource.url=jdbc:mysql://{host}:{port}/{database_name}
-spring.datasource.username= {username}
-spring.datasource.password= {password}
+
+* spring.application.name=library-management-react
+
+* spring.datasource.url=jdbc:mysql://{host}:{port}/{database_name}
+
+* spring.datasource.username= {username}
+
+* spring.datasource.password= {password}
 3. Run schema.sql file located in the same folder
 4. Start the springboot server with command "mvn spring-boot:run" in your IDE terminal, the default port for this server is localhost:8080
 
