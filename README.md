@@ -13,8 +13,11 @@ Currently, two official plugins are available:
 # Setup
 
 MySQL 8.3.4: https://dev.mysql.com/downloads/mysql/8.4.html
+
 Maven 3.9.9: https://maven.apache.org/download.cgi
+
 Java JDK: https://www.oracle.com/java/technologies/downloads/
+
 Nodejs : https://nodejs.org/en/download/package-manager
 
 Ensure you are able to access MySQL from your terminal, and that you can see versions of Maven, Java, and Node with the -version command in your terminal.
