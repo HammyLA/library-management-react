@@ -11,6 +11,7 @@ import com.lib.library_management_react.repository.BookRepository;
 import com.lib.library_management_react.repository.MemberRepository;
 import com.lib.library_management_react.repository.RentalRepository;
 
+
 @RestController
 @RequestMapping("/api/rentals")
 public class RentalController {
@@ -28,6 +29,7 @@ public class RentalController {
     public Iterable<Rental> findAll() {
         return rentals.findAll();
     }
+    
 
     @GetMapping("/{id}")
     public Rental findById(@PathVariable Integer id) {

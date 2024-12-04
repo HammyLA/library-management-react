@@ -7,7 +7,7 @@ function Header() {
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
           <Link className="navbar-brand" to="/">
-            <h3 className="text-dark">Header</h3>
+            <h3 className="text-dark">Book Website</h3>
           </Link>
           <div className="collapse navbar-collapse">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
@@ -29,6 +29,11 @@ function Header() {
               <li className="nav-item">
                 <Link className="nav-link" to="/rentals">
                   <h6>Rentals</h6>
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/addbook">
+                  <h6>AddBook</h6>
                 </Link>
               </li>
             </ul>

@@ -6,6 +6,7 @@ import Books from "./pages/Books";
 import Rentals from "./pages/Rentals";
 import Header from "./components/Header";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import CreateBook from "./pages/CreateBook";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -19,6 +20,7 @@ function App() {
           <Route path="/books" element={<Books />} />
           <Route path="/members" element={<Members />} />
           <Route path="/rentals" element={<Rentals />} />
+          <Route path="/addbook" element={<CreateBook />} />
         </Routes>
       </Router>
     </div>
