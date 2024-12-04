@@ -1,5 +1,7 @@
 package com.lib.library_management_react.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,11 +16,16 @@ import com.lib.library_management_react.repository.RentalRepository;
 
 @RestController
 @RequestMapping("/api/rentals")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class RentalController {
     
+    @Autowired
     private final BookRepository books;
+    @Autowired
     private final MemberRepository members;
+    @Autowired
     private final RentalRepository rentals;
+
     public RentalController(BookRepository books, MemberRepository members, RentalRepository rentals) {
         this.books = books;
         this.members = members;
