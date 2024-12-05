@@ -25,7 +25,10 @@ function BookDetails() {
           </div>
           <h4>Book ID: {bookDetails.bookid}</h4>
           <h4>Book Title: {bookDetails.title}</h4>
-          <h4>Description: {bookDetails.description}</h4>
+          <div className="container-sm p-3">
+            <h4>Description:</h4>
+            <h5>{bookDetails.description}</h5>
+          </div>
           <h4>Year Published: {bookDetails.yearPublished}</h4>
         </div>
       </>
