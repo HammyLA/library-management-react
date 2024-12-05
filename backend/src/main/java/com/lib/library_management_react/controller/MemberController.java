@@ -37,7 +37,7 @@ public class MemberController {
     }
 
     @PostMapping
-    public ResponseEntity<Member> postMethodName(@RequestBody Member member) {
+    public ResponseEntity<Member> postMember(@RequestBody Member member) {
         Member savedMember = members.save(member);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedMember);
     }

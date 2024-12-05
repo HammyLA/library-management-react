@@ -31,7 +31,7 @@ function CreateMember() {
   return (
     <div class="container-sm">
       <div class="d-flex justify-content-center p-5">
-        <h1>Submit Book Details</h1>
+        <h1>Membership Details</h1>
       </div>
 
       <form onSubmit={handleSubmit}>

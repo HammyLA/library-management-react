@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import RentalCard from "../components/RentalCard";
+import { Link } from "react-router-dom";
 
 function Rentals() {
   const [rentalList, setRentalList] = useState([]);
@@ -15,6 +16,11 @@ function Rentals() {
 
   return (
     <div>
+      <div className="mx-3 p-2">
+        <Link to="/addrental">
+          <button className="btn btn-success">+ Rental</button>
+        </Link>
+      </div>
       <ul class="list-group">
         <li class="list-group-item">
           <div className="d-flex flex-row">

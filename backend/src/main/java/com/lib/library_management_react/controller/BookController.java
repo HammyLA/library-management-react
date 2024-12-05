@@ -36,7 +36,7 @@ public class BookController {
     }
 
     @PostMapping
-    public ResponseEntity<Book> postMethodName(@RequestBody Book book) {
+    public ResponseEntity<Book> postBook(@RequestBody Book book) {
         Book savedBook = books.save(book);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedBook);
     }

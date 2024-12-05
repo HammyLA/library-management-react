@@ -17,9 +17,9 @@ public class Rental {
     private LocalDateTime dayOfRental;
     private LocalDateTime dueDate;
 
-    public Rental(AggregateReference<Member, Integer> member, AggregateReference<Book, Integer> book) {
-        this.member = member;
-        this.book = book;
+    public Rental(Integer member, Integer book) {
+        this.member = AggregateReference.to(member);
+        this.book = AggregateReference.to(book);
         this.dayOfRental = LocalDateTime.now();
         this.dueDate = LocalDateTime.now().plusWeeks(WEEKS_DUE);
     }
