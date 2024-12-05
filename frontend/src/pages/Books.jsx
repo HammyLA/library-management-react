@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import BookCard from "../components/BookCard";
+import { Link } from "react-router-dom";
 
 function Books() {
   const [bookList, setBookList] = useState([]);
@@ -14,12 +15,18 @@ function Books() {
 
   return (
     <div>
+      <div className="mx-3 p-2">
+        <Link to="/addbook">
+          <button className="btn btn-success">+ Book</button>
+        </Link>
+      </div>
+
       <ul class="list-group">
         <li class="list-group-item">
           <div className="d-flex flex-row">
-            <strong className="p-2">Book List</strong>
-            <strong className="p-2">Year</strong>
-            <strong className="d-flex justify-content-center p-2">Title</strong>
+            <strong className="col p-2">Book List</strong>
+            <strong className="col p-2">Year</strong>
+            <strong className="col p-2">Title</strong>
           </div>
         </li>
         {bookList.map((book, index) => (

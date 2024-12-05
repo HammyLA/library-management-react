@@ -9,6 +9,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import CreateBook from "./pages/CreateBook";
 import BookDetails from "./pages/BookDetails";
 import RentalDetails from "./pages/RentalDetails";
+import MemberDetails from "./pages/MemberDetails";
+import CreateMember from "./pages/CreateMember";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -25,6 +27,8 @@ function App() {
           <Route path="/addbook" element={<CreateBook />} />
           <Route path="/books/:id" element={<BookDetails />} />
           <Route path="/rentals/:id" element={<RentalDetails />} />
+          <Route path="/members/:id" element={<MemberDetails />} />
+          <Route path="/addmember" element={<CreateMember />} />
         </Routes>
       </Router>
     </div>

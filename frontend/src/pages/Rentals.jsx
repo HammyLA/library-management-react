@@ -18,11 +18,10 @@ function Rentals() {
       <ul class="list-group">
         <li class="list-group-item">
           <div className="d-flex flex-row">
-            <strong className="p-2 flex-fill">Rentals</strong>
-            <strong className="p-2 flex-fill">MemID</strong>
-            <strong className="p-2 flex-fill">BookID</strong>
-            <strong className="p-2 flex-fill">Rent Date</strong>
-            <strong className="p-2 flex-fill">Due</strong>
+            <strong className="p-2 col">Rentals</strong>
+            <strong className="p-2 col">MemID</strong>
+            <strong className="p-2 col">BookID</strong>
+            <strong className="p-2 col">Due</strong>
           </div>
         </li>
         {rentalList.map((rental, index) => (

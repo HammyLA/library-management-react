@@ -23,10 +23,10 @@ function BookDetails() {
           <div className="d-flex justify-content-center p-5">
             <h1>Book Details</h1>
           </div>
-          <div>Book ID: {bookDetails.bookid}</div>
-          <div>Book Title: {bookDetails.title}</div>
-          <div>Description: {bookDetails.description}</div>
-          <div>Year Published: {bookDetails.yearPublished}</div>
+          <h4>Book ID: {bookDetails.bookid}</h4>
+          <h4>Book Title: {bookDetails.title}</h4>
+          <h4>Description: {bookDetails.description}</h4>
+          <h4>Year Published: {bookDetails.yearPublished}</h4>
         </div>
       </>
     );

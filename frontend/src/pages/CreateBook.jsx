@@ -1,7 +1,10 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function CreateBook() {
+  const navigate = useNavigate();
+
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [yearPublished, setYearPublished] = useState(2024);
@@ -12,17 +15,20 @@ function CreateBook() {
     console.log(description);
     console.log(yearPublished);
 
-    axios.post('http://localhost:8080/api/books', {
-      title: title,
-      description: description,
-      yearPublished: yearPublished,
-    })
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+    axios
+      .post("http://localhost:8080/api/books", {
+        title: title,
+        description: description,
+        yearPublished: yearPublished,
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+    navigate(("/books"));
   };
 
   return (

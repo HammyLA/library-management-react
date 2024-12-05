@@ -1,13 +1,14 @@
 import axios from "axios";
 import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
+import { formatDate } from "../utility/util";
 
 function RentalCard(props) {
 
 
   return (
-    <div className="d-flex align-items-center">
-      <div className="p-2 flex-sm-grow-1">
+    <div className="d-flex flex-row align-items-center">
+      <div className="p-2 col">
         <Link
           to={`/rentals/${props.rental.rentalid}`}
           params={{ id: props.rental.rentalid }}
@@ -17,10 +18,9 @@ function RentalCard(props) {
           </button>
         </Link>
       </div>
-      <div className="p-2 flex-sm-grow-1">{props.rental.member.id}</div>
-      <div className="p-2 flex-sm-grow-1">{props.rental.book.id}</div>
-      <div className="p-2 flex-sm-grow-1">{props.rental.dayOfRental}</div>
-      <div className="p-2 flex-sm-grow-1">{props.rental.dueDate}</div>
+      <div className="p-2 col">{props.rental.member.id}</div>
+      <div className="p-2 col">{props.rental.book.id}</div>
+      <div className="p-2 col">{formatDate(props.rental.dueDate)}</div>
     </div>
   );
 }

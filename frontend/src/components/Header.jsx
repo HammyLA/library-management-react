@@ -31,11 +31,6 @@ function Header() {
                   <h6>Rentals</h6>
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/addbook">
-                  <h6>AddBook</h6>
-                </Link>
-              </li>
             </ul>
           </div>
         </div>

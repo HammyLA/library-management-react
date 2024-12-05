@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function BookCard(props) {
   return (
     <div className="d-flex flex-row align-items-center">
-      <div className="p-2">
+      <div className="col p-2">
         <Link
           to={`/books/${props.book.bookid}`}
           params={{ id: props.book.bookid }}
@@ -14,8 +14,8 @@ function BookCard(props) {
           </button>
         </Link>
       </div>
-      <div className="p-2">{props.book.yearPublished}</div>
-      <div className="p-2 flex-grow-1">{props.book.title}</div>
+      <div className="col p-2">{props.book.yearPublished}</div>
+      <div className="col p-2">{props.book.title}</div>
     </div>
   );
 }
