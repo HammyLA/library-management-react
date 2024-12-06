@@ -25,6 +25,10 @@ public class BookRepository {
         return jdbcTemplate.queryForObject("SELECT * FROM Book WHERE bookid = ?", new BookRowMapper(), bookid);
     }
 
+    public List<Book> findByTitle(String title) {
+        return jdbcTemplate.query("SELECT * FROM Book WHERE title LIKE ?", new BookRowMapper(), "%" + title + "%");
+    }
+
     public int save(Book book) {
         return jdbcTemplate.update("INSERT INTO Book (title, description, year_published) VALUES (?, ?, ?)", book.getTitle(), book.getDescription(), book.getYearPublished());
     }

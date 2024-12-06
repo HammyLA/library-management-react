@@ -22,6 +22,10 @@ public class BookService {
         return BookRepository.findById(id);
     }
 
+    public List<Book> getBookByTitle(String title) {
+        return BookRepository.findByTitle(title);
+    }
+
     public Book createBook(Book book) {
         BookRepository.save(book);
         return book;

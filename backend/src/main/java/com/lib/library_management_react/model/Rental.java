@@ -24,6 +24,13 @@ public class Rental {
         this.dueDate = LocalDateTime.now().plusWeeks(WEEKS_DUE);
     }
 
+    public Rental() {
+        this.member = null;
+        this.book = null;
+        this.dayOfRental = LocalDateTime.now();
+        this.dueDate = LocalDateTime.now().plusWeeks(WEEKS_DUE);
+    }
+
     public int getRentalid() {
         return rentalid;
     }

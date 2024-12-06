@@ -14,6 +14,7 @@ import com.lib.library_management_react.model.Rental;
 import com.lib.library_management_react.repository.RentalRepository;
 import com.lib.library_management_react.service.BookService;
 import com.lib.library_management_react.service.MemberService;
+import com.lib.library_management_react.service.RentalService;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,9 +29,9 @@ public class RentalController {
     @Autowired
     private MemberService members;
     @Autowired
-    private final RentalRepository rentals;
+    private RentalService rentals;
 
-    public RentalController(BookService books, MemberService members, RentalRepository rentals) {
+    public RentalController(BookService books, MemberService members, RentalService rentals) {
         this.books = books;
         this.members = members;
         this.rentals = rentals;
@@ -38,24 +39,24 @@ public class RentalController {
 
     @GetMapping
     public Iterable<Rental> findAll() {
-        return rentals.findAll();
+        return rentals.getAllRentals();
     }
 
     @GetMapping("/{id}")
     public Rental findById(@PathVariable Integer id) {
-        return rentals.findById(id).orElse(null);
+        return rentals.getById(id);
     }
 
     @GetMapping("/{id}/details")
     public RentalDetails getRentalDetails(@PathVariable Integer id) {
-        Rental rental = rentals.findById(id).orElse(null);
+        Rental rental = rentals.getById(id);
         return new RentalDetails(rental, members.getById(rental.getMember().getId()),
                 books.getBookById(rental.getBook().getId()));
     }
 
     @PostMapping
     public ResponseEntity<Rental> postRental(@RequestBody Rental rental) {
-        Rental savedRental = rentals.save(rental);
+        Rental savedRental = rentals.createRental(rental);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedRental);
     }
 

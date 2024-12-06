@@ -14,6 +14,8 @@ import com.lib.library_management_react.service.BookService;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 @RestController
@@ -37,6 +39,12 @@ public class BookController {
     public Book findById(@PathVariable Integer id) {
         return books.getBookById(id);
     }
+
+    @GetMapping("/search")
+    public Iterable<Book> findByTitle(@RequestParam String title) {
+        return books.getBookByTitle(title);
+    }
+    
 
     @PostMapping
     public ResponseEntity<Book> postBook(@RequestBody Book book) {
