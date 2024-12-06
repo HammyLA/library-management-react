@@ -9,6 +9,8 @@ import com.lib.library_management_react.model.Book;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Repository
@@ -25,16 +27,37 @@ public class BookRepository {
         return jdbcTemplate.queryForObject("SELECT * FROM Book WHERE bookid = ?", new BookRowMapper(), bookid);
     }
 
-    public List<Book> findByTitle(String title) {
-        return jdbcTemplate.query("SELECT * FROM Book WHERE title LIKE ?", new BookRowMapper(), "%" + title + "%");
+    public List<Book> findByFilter(String title, List<String> genres) {
+        if (genres.isEmpty()) {
+            return jdbcTemplate.query("SELECT * FROM Book WHERE title LIKE ?", new BookRowMapper(), "%" + title + "%");
+        } else {
+            String sql = "SELECT * FROM Book WHERE title LIKE ? AND genre IN ("
+                    + String.join(",", Collections.nCopies(genres.size(), "?")) + ")";
+
+            List<Object> params = new ArrayList<>();
+            params.add("%" + title + "%");
+            params.addAll(genres);
+
+            // Execute the query with the generated SQL and parameters
+            return jdbcTemplate.query(sql, new BookRowMapper(), params.toArray());
+        }
+
+    }
+
+    public Book isRented(Integer bookid) {
+        return jdbcTemplate.queryForObject("SELECT * FROM Book WHERE bookid = ? AND bookid IN (SELECT book FROM Rental)", new BookRowMapper(), bookid);
     }
 
     public int save(Book book) {
-        return jdbcTemplate.update("INSERT INTO Book (title, description, year_published) VALUES (?, ?, ?)", book.getTitle(), book.getDescription(), book.getYearPublished());
+        return jdbcTemplate.update(
+                "INSERT INTO Book (title, author, genre, description, year_published) VALUES (?, ?, ?, ?, ?)",
+                book.getTitle(), book.getDescription(), book.getYearPublished());
     }
 
     public int update(Book book) {
-        return jdbcTemplate.update("UPDATE Book SET title = ?, description = ?, year_published = ? WHERE bookid = ?", book.getTitle(), book.getDescription(), book.getYearPublished(),
+        return jdbcTemplate.update(
+                "UPDATE Book SET title = ?, author = ?, genre = ?, description = ?, year_published = ? WHERE bookid = ?",
+                book.getTitle(), book.getDescription(), book.getYearPublished(),
                 book.getBookid());
     }
 
@@ -47,6 +70,8 @@ public class BookRepository {
         public Book mapRow(ResultSet rs, int rowNum) throws SQLException {
             Book book = new Book();
             book.setBookid(rs.getInt("bookid"));
+            book.setAuthor(rs.getString("author"));
+            book.setGenre(rs.getString("genre"));
             book.setTitle(rs.getString("title"));
             book.setYearPublished(rs.getInt("year_published"));
             book.setDescription(rs.getString("description"));

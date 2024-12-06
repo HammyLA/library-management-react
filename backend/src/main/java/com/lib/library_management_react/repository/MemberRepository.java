@@ -26,11 +26,11 @@ public class MemberRepository {
     }
 
     public int save(Member member) {
-        return jdbcTemplate.update("INSERT INTO Member (first_name, last_name) VALUES (?, ?)", member.getFirstName(), member.getLastName());
+        return jdbcTemplate.update("INSERT INTO Member (first_name, last_name, email) VALUES (?, ?, ?)", member.getFirstName(), member.getLastName(), member.getEmail());
     }
 
     public int update(Member member) {
-        return jdbcTemplate.update("UPDATE Member SET first_name = ?, last_name = ?", member.getFirstName(), member.getLastName());
+        return jdbcTemplate.update("UPDATE Member SET first_name = ?, last_name = ?, email = ?", member.getFirstName(), member.getLastName(), member.getEmail());
     }
 
     public int deleteById(Integer memberid) {
@@ -44,6 +44,7 @@ public class MemberRepository {
             member.setMemberid(rs.getInt("memberid"));
             member.setFirstName(rs.getString("first_name"));
             member.setLastName(rs.getString("last_name"));
+            member.setEmail(rs.getString("email"));
             member.setDateOfMembership((rs.getTimestamp("date_of_membership")).toLocalDateTime());
             return member;
         }

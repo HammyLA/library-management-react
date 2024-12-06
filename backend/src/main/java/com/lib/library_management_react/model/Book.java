@@ -9,19 +9,25 @@ public class Book {
     @Id
     private int bookid;
     private String title;
+    private String author;
+    private String genre;
     private String description;
     private int yearPublished;
     // author
     // comments
 
-    public Book(String title, String description, int yearPublished) {
+    public Book(String title, String author, String genre, String description, int yearPublished) {
         this.title = title;
+        this.author = author;
+        this.genre = genre;
         this.description = description;
         this.yearPublished = yearPublished;
     }
 
     public Book() {
         this.title = null;
+        this.author = null;
+        this.genre = null;
         this.description = null;
         this.yearPublished = 0;
     }
@@ -58,9 +64,25 @@ public class Book {
         this.yearPublished = yearPublished;
     }
 
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
     @Override
     public String toString() {
-        return "Book [bookid=" + bookid + ", title=" + title + ", description=" + description + ", yearPublished="
-                + yearPublished + "]";
+        return "Book [bookid=" + bookid + ", title=" + title + ", author=" + author + ", genre=" + genre
+                + ", description=" + description + ", yearPublished=" + yearPublished + "]";
     }
 }

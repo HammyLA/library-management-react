@@ -25,10 +25,11 @@ function MemberDetails() {
           <h1>Member Details</h1>
         </div>
         <div className="container-sm">
-          <h4>Member ID: {memberDetails.memberid}</h4>
+          <h4>ID: {memberDetails.memberid}</h4>
           <h4>
-            Member Name: {memberDetails.firstName} {memberDetails.lastName}
+            Name: {memberDetails.firstName} {memberDetails.lastName}
           </h4>
+          <h4>Email: {memberDetails.email}</h4>
           <h4>Membership Date: {formatDate(memberDetails.dateOfMembership)}</h4>
         </div>
       </>

@@ -1,9 +1,10 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { formatDate } from "../utility/util";
 
 function RentalDetails() {
+  const navigate = useNavigate()
   const [rentalDetails, setRentalDetails] = useState();
   const rentalid = useParams();
 
@@ -15,13 +16,29 @@ function RentalDetails() {
       });
   }, []);
 
+  const handleRemove = () => {
+    try {
+      const response = axios.delete(`http://localhost:8080/api/rentals/${rentalid.id}`)
+      console.log("Successfully deleted: ", response.data)
+    }
+    catch (error) {
+      console.log("Failed Delete", error)
+    }
+    navigate("/rentals")
+  }
+
   console.log(rentalDetails);
 
   if (rentalDetails) {
     return (
       <>
-        <div className="d-flex justify-content-center p-5">
-          <h1>Rental Details</h1>
+        <div className="px-3 py-2">
+          <button className="btn btn-danger" onClick={handleRemove}>Remove Rental</button>
+        </div>
+        <div className="d-flex justify-content-center p-3">
+          <h1>
+            <strong>Rental Details</strong>
+          </h1>
         </div>
         <div className="container-sm">
           <div className="d-flex">
@@ -40,7 +57,10 @@ function RentalDetails() {
           </div>
           <div className="mx-5 p-2">
             <h5>ID: {rentalDetails.member.memberid} </h5>
-            <h5>Name: {rentalDetails.member.firstName} {rentalDetails.member.lastName} </h5>
+            <h5>
+              Name: {rentalDetails.member.firstName}{" "}
+              {rentalDetails.member.lastName}{" "}
+            </h5>
           </div>
         </div>
         <div className="container-sm">

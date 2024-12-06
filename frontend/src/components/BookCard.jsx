@@ -16,6 +16,7 @@ function BookCard(props) {
       </div>
       <div className="col p-2">{props.book.yearPublished}</div>
       <div className="col p-2">{props.book.title}</div>
+      <div className="col p-2">{props.book.author}</div>
     </div>
   );
 }

@@ -22,13 +22,17 @@ public class BookService {
         return BookRepository.findById(id);
     }
 
-    public List<Book> getBookByTitle(String title) {
-        return BookRepository.findByTitle(title);
+    public List<Book> getBookByFilter(String title, List<String> genres) {
+        return BookRepository.findByFilter(title, genres);
     }
 
     public Book createBook(Book book) {
         BookRepository.save(book);
         return book;
+    }
+
+    public Boolean isRented(Integer bookid) {
+        return BookRepository.isRented(bookid) != null;
     }
 
     public Book updateBook(Integer id, Book BookDetails) {

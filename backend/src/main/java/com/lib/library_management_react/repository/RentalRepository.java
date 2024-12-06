@@ -47,8 +47,8 @@ public class RentalRepository{
         public Rental mapRow(ResultSet rs, int rowNum) throws SQLException {
             Rental book = new Rental();
             book.setRentalid(rs.getInt("rentalid"));
-            book.setMember(AggregateReference.to(rs.getInt("member")));
-            book.setBook(AggregateReference.to(rs.getInt("book")));
+            book.setMember(rs.getInt("member"));
+            book.setBook(rs.getInt("book"));
             book.setDayOfRental(rs.getTimestamp("day_of_rental").toLocalDateTime());
             book.setDueDate(rs.getTimestamp("due_date").toLocalDateTime());
             return book;

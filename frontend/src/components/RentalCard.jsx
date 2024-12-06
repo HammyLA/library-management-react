@@ -18,8 +18,8 @@ function RentalCard(props) {
           </button>
         </Link>
       </div>
-      <div className="p-2 col">{props.rental.member.id}</div>
-      <div className="p-2 col">{props.rental.book.id}</div>
+      <div className="p-2 col">{props.rental.member}</div>
+      <div className="p-2 col">{props.rental.book}</div>
       <div className="p-2 col">{formatDate(props.rental.dueDate)}</div>
     </div>
   );

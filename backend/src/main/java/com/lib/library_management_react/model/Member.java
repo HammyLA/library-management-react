@@ -12,17 +12,20 @@ public class Member {
     private int memberid;
     private String firstName;
     private String lastName;
+    private String email;
     private LocalDateTime dateOfMembership;
 
-    public Member(String firstName, String lastName) {
+    public Member(String firstName, String lastName, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.email = email;
         this.dateOfMembership = LocalDateTime.now();
     }
 
     public Member() {
         this.firstName = null;
         this.lastName = null;
+        this.email = null;
         this.dateOfMembership = LocalDateTime.now();
     }
 
@@ -58,9 +61,17 @@ public class Member {
         this.dateOfMembership = dateOfMembership;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     @Override
     public String toString() {
-        return "Members [memberid=" + memberid + ", firstName=" + firstName + ", lastName=" + lastName
-                + ", dateOfMembership=" + dateOfMembership + "]";
+        return "Member [memberid=" + memberid + ", firstName=" + firstName + ", lastName=" + lastName + ", email="
+                + email + ", dateOfMembership=" + dateOfMembership + "]";
     }
 }

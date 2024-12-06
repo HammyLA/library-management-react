@@ -16,7 +16,7 @@ function CreateRental() {
     if (member > 0 && book > 0) {
       const payload = {
         member: member,
-        book: book,
+        book: book
       };
       axios
         .post("http://localhost:8080/api/rentals", payload)
