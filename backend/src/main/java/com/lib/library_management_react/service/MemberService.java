@@ -5,9 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.lib.library_management_react.repository.BookRepository;
 import com.lib.library_management_react.repository.MemberRepository;
-import com.lib.library_management_react.model.Book;
 import com.lib.library_management_react.model.Member;
 
 @Service

@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.lib.library_management_react.controller.dto.RentalDetails;
 import com.lib.library_management_react.model.Rental;
-import com.lib.library_management_react.repository.BookRepository;
-import com.lib.library_management_react.repository.MemberRepository;
 import com.lib.library_management_react.repository.RentalRepository;
 import com.lib.library_management_react.service.BookService;
 import com.lib.library_management_react.service.MemberService;

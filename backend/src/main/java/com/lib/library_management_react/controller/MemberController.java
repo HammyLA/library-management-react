@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lib.library_management_react.model.Member;
-import com.lib.library_management_react.repository.MemberRepository;
 import com.lib.library_management_react.service.MemberService;
 
 @RestController

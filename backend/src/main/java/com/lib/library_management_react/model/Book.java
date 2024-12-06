@@ -63,11 +63,4 @@ public class Book {
         return "Book [bookid=" + bookid + ", title=" + title + ", description=" + description + ", yearPublished="
                 + yearPublished + "]";
     }
-
-    public void setEmail(String string) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setEmail'");
-    }
-
-    
 }
