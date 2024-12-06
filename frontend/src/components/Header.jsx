@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function Header() {
   return (
     <>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary">
+      <nav className="navbar navbar-expand-lg bg-body-tertiary border-bottom">
         <div className="container-fluid">
           <Link className="navbar-brand" to="/">
             <h3 className="text-dark p-3">Online Library</h3>
