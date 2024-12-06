@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { use } from "react";
 import { useNavigate } from "react-router-dom";
 
 function CreateMember() {
@@ -7,6 +8,7 @@ function CreateMember() {
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -17,6 +19,7 @@ function CreateMember() {
       .post("http://localhost:8080/api/members", {
         firstName: firstName,
         lastName: lastName,
+        email: email,
       })
       .then(function (response) {
         console.log(response);
@@ -55,6 +58,17 @@ function CreateMember() {
             class="form-control"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
+          />
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">
+            Email Account
+          </label>
+          <input
+            name="email"
+            class="form-control"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
         <button type="submit" class="btn btn-primary">
