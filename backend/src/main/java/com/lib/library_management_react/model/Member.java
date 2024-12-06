@@ -20,6 +20,12 @@ public class Member {
         this.dateOfMembership = LocalDateTime.now();
     }
 
+    public Member() {
+        this.firstName = null;
+        this.lastName = null;
+        this.dateOfMembership = LocalDateTime.now();
+    }
+
     public int getMemberid() {
         return memberid;
     }

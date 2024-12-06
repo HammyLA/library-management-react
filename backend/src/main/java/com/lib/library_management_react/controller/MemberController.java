@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.lib.library_management_react.model.Member;
 import com.lib.library_management_react.repository.MemberRepository;
+import com.lib.library_management_react.service.MemberService;
 
 @RestController
 @RequestMapping("/api/members")
@@ -20,25 +21,25 @@ import com.lib.library_management_react.repository.MemberRepository;
 public class MemberController {
 
     @Autowired
-    private final MemberRepository members;
+    private final MemberService members;
 
-    public MemberController(MemberRepository members) {
+    public MemberController(MemberService members) {
         this.members = members;
     }
 
     @GetMapping
     public Iterable<Member> findAll() {
-        return members.findAll();
+        return members.getAllMembers();
     }
 
     @GetMapping("/{id}")
     public Member findById(@PathVariable Integer id) {
-        return members.findById(id).orElse(null);
+        return members.getById(id);
     }
 
     @PostMapping
     public ResponseEntity<Member> postMember(@RequestBody Member member) {
-        Member savedMember = members.save(member);
+        Member savedMember = members.createMember(member);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedMember);
     }
 }

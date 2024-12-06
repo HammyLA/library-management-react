@@ -15,6 +15,7 @@ import com.lib.library_management_react.repository.BookRepository;
 import com.lib.library_management_react.repository.MemberRepository;
 import com.lib.library_management_react.repository.RentalRepository;
 import com.lib.library_management_react.service.BookService;
+import com.lib.library_management_react.service.MemberService;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,11 +28,11 @@ public class RentalController {
     @Autowired
     private BookService books;
     @Autowired
-    private final MemberRepository members;
+    private MemberService members;
     @Autowired
     private final RentalRepository rentals;
 
-    public RentalController(BookService books, MemberRepository members, RentalRepository rentals) {
+    public RentalController(BookService books, MemberService members, RentalRepository rentals) {
         this.books = books;
         this.members = members;
         this.rentals = rentals;
@@ -50,7 +51,7 @@ public class RentalController {
     @GetMapping("/{id}/details")
     public RentalDetails getRentalDetails(@PathVariable Integer id) {
         Rental rental = rentals.findById(id).orElse(null);
-        return new RentalDetails(rental, members.findById(rental.getMember().getId()).get(),
+        return new RentalDetails(rental, members.getById(rental.getMember().getId()),
                 books.getBookById(rental.getBook().getId()));
     }
 

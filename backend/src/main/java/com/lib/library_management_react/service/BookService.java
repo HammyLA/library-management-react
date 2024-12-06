@@ -22,20 +22,20 @@ public class BookService {
         return BookRepository.findById(id);
     }
 
-    public Book createBook(Book Book) {
-        BookRepository.save(Book);
-        return Book;
+    public Book createBook(Book book) {
+        BookRepository.save(book);
+        return book;
     }
 
     public Book updateBook(Integer id, Book BookDetails) {
-        Book Book = BookRepository.findById(id);
-        if (Book != null) {
-            Book.setTitle(BookDetails.getTitle());
-            Book.setDescription(BookDetails.getTitle());
-            Book.setYearPublished(BookDetails.getYearPublished());
-            BookRepository.update(Book);
+        Book book = BookRepository.findById(id);
+        if (book != null) {
+            book.setTitle(BookDetails.getTitle());
+            book.setDescription(BookDetails.getTitle());
+            book.setYearPublished(BookDetails.getYearPublished());
+            BookRepository.update(book);
         }
-        return Book;
+        return book;
     }
 
     public void deleteBook(Integer id) {

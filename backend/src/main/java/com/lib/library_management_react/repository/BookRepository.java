@@ -18,11 +18,11 @@ public class BookRepository {
     private JdbcTemplate jdbcTemplate;
 
     public List<Book> findAll() {
-        return jdbcTemplate.query("SELECT * FROM Book", new UserRowMapper());
+        return jdbcTemplate.query("SELECT * FROM Book", new BookRowMapper());
     }
 
     public Book findById(Integer bookid) {
-        return jdbcTemplate.queryForObject("SELECT * FROM Book WHERE bookid = ?", new UserRowMapper(), bookid);
+        return jdbcTemplate.queryForObject("SELECT * FROM Book WHERE bookid = ?", new BookRowMapper(), bookid);
     }
 
     public int save(Book book) {
@@ -38,7 +38,7 @@ public class BookRepository {
         return jdbcTemplate.update("DELETE FROM Book WHERE bookid = ?", bookid);
     }
 
-    private static final class UserRowMapper implements RowMapper<Book> {
+    private static final class BookRowMapper implements RowMapper<Book> {
         @Override
         public Book mapRow(ResultSet rs, int rowNum) throws SQLException {
             Book book = new Book();
