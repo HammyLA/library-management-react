@@ -1,8 +1,11 @@
 import React from "react";
+import "../styles/Home.css"
 
 function Home() {
   return (
-    <div className="vh-100 border d-flex flex-column justify-content-center align-items-center text-center">
+    <div
+      className="vh-100 border d-flex flex-column justify-content-center align-items-center text-center custom-background text-white"
+    >
       <div className="row">
         <h1>
           <strong>Personal Library Manager</strong>

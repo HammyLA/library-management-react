@@ -46,3 +46,5 @@ Frontend
 # Acknowledgements
 
 Saye was used as a source for default book inserts in schema.sql: https://www.sayebrand.com/blogs/stories/25famousbooks
+
+Vondy used to generate landing page image: https://www.vondy.com/
