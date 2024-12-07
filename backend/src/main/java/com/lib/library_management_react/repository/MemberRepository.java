@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
+import com.lib.library_management_react.model.Book;
 import com.lib.library_management_react.model.Member;
 
 @Repository
@@ -25,12 +26,23 @@ public class MemberRepository {
         return jdbcTemplate.queryForObject("SELECT * FROM Member WHERE memberid = ?", new MemberRowMapper(), memberid);
     }
 
+    public List<Member> findByName(String name) {
+        if (!(name == null || name.isEmpty())) {
+            return jdbcTemplate.query("SELECT * FROM Member WHERE first_name LIKE ? OR last_name LIKE ?", new MemberRowMapper(), "%" + name + "%", "%" + name + "%");
+        }
+        else {
+            return findAll();
+        }
+    }
+
     public int save(Member member) {
-        return jdbcTemplate.update("INSERT INTO Member (first_name, last_name, email) VALUES (?, ?, ?)", member.getFirstName(), member.getLastName(), member.getEmail());
+        return jdbcTemplate.update("INSERT INTO Member (first_name, last_name, email) VALUES (?, ?, ?)",
+                member.getFirstName(), member.getLastName(), member.getEmail());
     }
 
     public int update(Member member) {
-        return jdbcTemplate.update("UPDATE Member SET first_name = ?, last_name = ?, email = ?", member.getFirstName(), member.getLastName(), member.getEmail());
+        return jdbcTemplate.update("UPDATE Member SET first_name = ?, last_name = ?, email = ?", member.getFirstName(),
+                member.getLastName(), member.getEmail());
     }
 
     public int deleteById(Integer memberid) {

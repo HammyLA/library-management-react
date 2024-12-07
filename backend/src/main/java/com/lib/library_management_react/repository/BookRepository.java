@@ -44,14 +44,14 @@ public class BookRepository {
 
     }
 
-    public Book isRented(Integer bookid) {
-        return jdbcTemplate.queryForObject("SELECT * FROM Book WHERE bookid = ? AND bookid IN (SELECT book FROM Rental)", new BookRowMapper(), bookid);
+    public List<Book> isRented(Integer bookid) {
+        return jdbcTemplate.query("SELECT * FROM Book WHERE bookid = ? AND bookid IN (SELECT book FROM Rental)", new BookRowMapper(), bookid);
     }
 
     public int save(Book book) {
         return jdbcTemplate.update(
                 "INSERT INTO Book (title, author, genre, description, year_published) VALUES (?, ?, ?, ?, ?)",
-                book.getTitle(), book.getDescription(), book.getYearPublished());
+                book.getTitle(), book.getAuthor(), book.getGenre(), book.getDescription(), book.getYearPublished());
     }
 
     public int update(Book book) {

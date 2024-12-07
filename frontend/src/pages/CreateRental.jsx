@@ -1,12 +1,14 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import Members from "./Members";
 
 function CreateRental() {
   const navigate = useNavigate();
+  const props = useParams();
 
   const [member, setMember] = useState(-1);
-  const [book, setBook] = useState(-1);
+  const [book, setBook] = useState(props.id);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -16,7 +18,7 @@ function CreateRental() {
     if (member > 0 && book > 0) {
       const payload = {
         member: member,
-        book: book
+        book: book,
       };
       axios
         .post("http://localhost:8080/api/rentals", payload)
@@ -37,33 +39,40 @@ function CreateRental() {
         <h1>Rental Details</h1>
       </div>
 
-      <form onSubmit={handleSubmit}>
-        <div class="mb-3">
-          <label htmlFor="member" class="form-label">
-            Member ID
-          </label>
-          <input
-            name="member"
-            class="form-control"
-            value={member}
-            onChange={(e) => setMember(e.target.value)}
-          />
+      <div className="d-flex flex-row">
+        <div className="col">
+          <form onSubmit={handleSubmit}>
+            <div class="mb-3">
+              <label htmlFor="member" class="form-label">
+                Member ID
+              </label>
+              <input
+                name="member"
+                class="form-control"
+                value={member}
+                onChange={(e) => setMember(e.target.value)}
+              />
+            </div>
+            <div class="mb-3">
+              <label htmlFor="book" class="form-label">
+                Book ID
+              </label>
+              <input
+                name="book"
+                class="form-control"
+                value={book}
+                onChange={(e) => setBook(e.target.value)}
+              />
+            </div>
+            <button type="submit" class="btn btn-primary">
+              Submit
+            </button>
+          </form>
         </div>
-        <div class="mb-3">
-          <label htmlFor="book" class="form-label">
-            Book ID
-          </label>
-          <input
-            name="book"
-            class="form-control"
-            value={book}
-            onChange={(e) => setBook(e.target.value)}
-          />
+        <div className="col">
+          <Members />
         </div>
-        <button type="submit" class="btn btn-primary">
-          Submit
-        </button>
-      </form>
+      </div>
     </div>
   );
 }

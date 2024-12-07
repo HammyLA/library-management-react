@@ -16,8 +16,8 @@ function SearchBar(props) {
         <input
           type="text"
           class="form-control"
-          placeholder="Search Books"
-          aria-label="Search Books"
+          placeholder="Search"
+          aria-label="Search"
           aria-describedby="button-addon2"
           value={titleSearch}
           onChange={(e) => setTitleSearch(e.target.value)}

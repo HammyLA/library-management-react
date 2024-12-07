@@ -6,6 +6,8 @@ function CreateBook() {
   const navigate = useNavigate();
 
   const [title, setTitle] = useState("");
+  const [author, setAuthor] = useState("");
+  const [genre, setGenre] = useState("");
   const [description, setDescription] = useState("");
   const [yearPublished, setYearPublished] = useState(2024);
 
@@ -18,6 +20,8 @@ function CreateBook() {
     axios
       .post("http://localhost:8080/api/books", {
         title: title,
+        author: author,
+        genre: genre,
         description: description,
         yearPublished: yearPublished,
       })
@@ -40,7 +44,7 @@ function CreateBook() {
       <form onSubmit={handleSubmit}>
         <div class="mb-3">
           <label for="BookTitle" class="form-label">
-            BookTitle
+            Enter Title
           </label>
           <input
             name="title"
@@ -49,6 +53,32 @@ function CreateBook() {
             id="BookTitle"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
+          />
+        </div>
+        <div class="mb-3">
+          <label for="BookAuthor" class="form-label">
+            Author Name
+          </label>
+          <input
+            name="author"
+            type="author"
+            class="form-control"
+            id="BookAuthor"
+            value={author}
+            onChange={(e) => setAuthor(e.target.value)}
+          />
+        </div>
+        <div class="mb-3">
+          <label for="BookGenre" class="form-label">
+            Book Genre
+          </label>
+          <input
+            name="genre"
+            type="genre"
+            class="form-control"
+            id="BookGenre"
+            value={genre}
+            onChange={(e) => setGenre(e.target.value)}
           />
         </div>
         <div class="mb-3">

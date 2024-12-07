@@ -11,8 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 
 import com.lib.library_management_react.model.Book;
+import com.lib.library_management_react.model.Member;
 import com.lib.library_management_react.service.BookService;
 
 import org.springframework.web.bind.annotation.PostMapping;
@@ -58,6 +60,12 @@ public class BookController {
     public ResponseEntity<Book> postBook(@RequestBody Book book) {
         Book savedBook = books.createBook(book);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedBook);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Book> deleteMember(@PathVariable Integer id) {
+        books.deleteBook(id);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
     
 }

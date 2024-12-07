@@ -5,13 +5,14 @@ import Members from "./pages/Members";
 import Books from "./pages/Books";
 import Rentals from "./pages/Rentals";
 import Header from "./components/Header";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 import CreateBook from "./pages/CreateBook";
 import BookDetails from "./pages/BookDetails";
 import RentalDetails from "./pages/RentalDetails";
 import MemberDetails from "./pages/MemberDetails";
 import CreateMember from "./pages/CreateMember";
 import CreateRental from "./pages/CreateRental";
+import "./App.css";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -30,7 +31,7 @@ function App() {
           <Route path="/rentals/:id" element={<RentalDetails />} />
           <Route path="/members/:id" element={<MemberDetails />} />
           <Route path="/addmember" element={<CreateMember />} />
-          <Route path="/addrental" element={<CreateRental />} />
+          <Route path="/addrental/:id" element={<CreateRental />} />
         </Routes>
       </Router>
     </div>

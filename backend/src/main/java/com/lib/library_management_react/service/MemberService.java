@@ -22,6 +22,10 @@ public class MemberService {
         return memberRepository.findById(memberid);
     }
 
+    public List<Member> getByName(String name) {
+        return memberRepository.findByName(name);
+    }
+
     public Member createMember(Member member) {
         memberRepository.save(member);
         return member;

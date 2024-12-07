@@ -32,7 +32,7 @@ public class BookService {
     }
 
     public Boolean isRented(Integer bookid) {
-        return BookRepository.isRented(bookid) != null;
+        return !BookRepository.isRented(bookid).isEmpty();
     }
 
     public Book updateBook(Integer id, Book BookDetails) {
