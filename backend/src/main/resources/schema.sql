@@ -12,7 +12,7 @@ DROP TABLE Member;
 
 CREATE TABLE Book (
     bookid INT AUTO_INCREMENT PRIMARY KEY,
-    title VARCHAR(1024) NOT NULL,
+    title VARCHAR(100) NOT NULL,
     author VARCHAR(80) DEFAULT 'NONE',
     genre VARCHAR(40) NOT NULL,
     description TEXT NOT NULL,
