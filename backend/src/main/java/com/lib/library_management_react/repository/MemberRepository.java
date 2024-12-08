@@ -79,8 +79,9 @@ public class MemberRepository {
      * @return the number of rows affected (should be 1 if successful).
      */
     public int update(Member member) {
-        return jdbcTemplate.update("UPDATE Member SET first_name = ?, last_name = ?, email = ?", member.getFirstName(),
-                member.getLastName(), member.getEmail());
+        return jdbcTemplate.update("UPDATE Member SET first_name = ?, last_name = ?, email = ? WHERE memberid = ?",
+                member.getFirstName(),
+                member.getLastName(), member.getEmail(), member.getMemberid());
     }
 
     /**

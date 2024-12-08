@@ -24,6 +24,10 @@ function MemberDetails() {
     });
   }, [id]);
 
+  const handleEdit = () => {
+    navigate(`/members/${id}/edit`);
+  };
+
   const handleRemove = () => {
     setErrorMessage("");
     try {
@@ -59,6 +63,9 @@ function MemberDetails() {
             onClick={handleRemove}
           >
             Remove Member
+          </button>
+          <button className="btn btn-primary m-3" onClick={handleEdit}>
+            Edit
           </button>
         </div>
         {errorMessage && (

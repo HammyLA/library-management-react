@@ -94,6 +94,12 @@ public class MemberController {
         return ResponseEntity.status(HttpStatus.CREATED).body(savedMember);
     }
 
+    @PostMapping("/{id}/edit")
+    public Member editMember(@PathVariable Integer id, @RequestBody Member member) {
+        return members.updateMember(id, member);
+    }
+    
+
     /**
      * DELETE /api/members/{id}: Delete a member by their ID, if they have no active rentals.
      *

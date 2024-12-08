@@ -39,7 +39,8 @@ public class BookService {
 
     /**
      * Retrieves books based on a title and a list of genres.
-     * If no filters are provided, all books may be returned (depending on repository logic).
+     * If no filters are provided, all books may be returned (depending on
+     * repository logic).
      * 
      * @param title  the title filter for the book search.
      * @param genres a list of genres to filter the books.
@@ -74,14 +75,16 @@ public class BookService {
      * Updates the details of an existing book.
      * If the book is not found, it returns null.
      * 
-     * @param id           the ID of the book to update.
-     * @param BookDetails  the updated details of the book.
+     * @param id          the ID of the book to update.
+     * @param BookDetails the updated details of the book.
      * @return the updated Book object, or null if not found.
      */
     public Book updateBook(Integer id, Book BookDetails) {
         Book book = BookRepository.findById(id); // Fetch the existing book.
         if (book != null) { // Update only if the book exists.
             book.setTitle(BookDetails.getTitle());
+            book.setAuthor(BookDetails.getAuthor());
+            book.setGenre(BookDetails.getGenre());
             book.setDescription(BookDetails.getDescription()); // Fixed to update the description correctly.
             book.setYearPublished(BookDetails.getYearPublished());
             BookRepository.update(book); // Save the updated book to the database.

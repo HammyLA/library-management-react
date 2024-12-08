@@ -22,6 +22,10 @@ function BookDetails() {
   // Navigate to rental page
   const handleAdd = () => navigate(`/addrental/${book.id}`);
 
+  const handleEdit = () => {
+    navigate(`/books/${book.id}/edit`)
+  }
+
   // Delete book from system and navigate back to books list
   const handleRemove = () => {
     try {
@@ -42,14 +46,20 @@ function BookDetails() {
             disabled={isRented}
             onClick={handleAdd}
           >
-            Rent Book
+            Rent
           </button>
           <button
             className="btn btn-danger m-3"
             disabled={isRented}
             onClick={handleRemove}
           >
-            Remove Book
+            Remove
+          </button>
+          <button
+            className="btn btn-primary m-3"
+            onClick={handleEdit}
+          >
+            Edit
           </button>
         </div>
         <div className="d-flex justify-content-center p-3">

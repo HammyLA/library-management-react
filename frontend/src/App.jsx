@@ -12,7 +12,9 @@ import RentalDetails from "./pages/RentalDetails";
 import MemberDetails from "./pages/MemberDetails";
 import CreateMember from "./pages/CreateMember";
 import CreateRental from "./pages/CreateRental";
+import EditBook from "./pages/EditBook";
 import "./App.css";
+import EditMember from "./pages/EditMember";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -32,6 +34,8 @@ function App() {
           <Route path="/members/:id" element={<MemberDetails />} />
           <Route path="/addmember" element={<CreateMember />} />
           <Route path="/addrental/:id" element={<CreateRental />} />
+          <Route path="/books/:id/edit" element={<EditBook />} />
+          <Route path="/members/:id/edit" element={<EditMember />} />
         </Routes>
       </Router>
     </div>

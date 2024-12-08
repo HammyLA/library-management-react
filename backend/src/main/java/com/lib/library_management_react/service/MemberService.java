@@ -81,6 +81,7 @@ public class MemberService {
         if (member != null) { // Update only if the member exists.
             member.setFirstName(memberDetails.getFirstName());
             member.setLastName(memberDetails.getLastName());
+            member.setEmail(memberDetails.getEmail());
             memberRepository.update(member); // Save the updated member to the database.
         }
         return member;

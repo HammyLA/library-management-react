@@ -99,6 +99,12 @@ public class BookController {
         return ResponseEntity.status(HttpStatus.CREATED).body(savedBook);
     }
 
+    @PostMapping("/{id}/edit")
+    public Book editBook(@PathVariable Integer id, @RequestBody Book book) {
+        return books.updateBook(id, book);
+    }
+    
+
     /**
      * DELETE /api/books/{id}: Delete a book by its ID.
      *
