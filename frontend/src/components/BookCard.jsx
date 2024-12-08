@@ -5,6 +5,7 @@ function BookCard(props) {
   return (
     <div className="d-flex flex-row align-items-center">
       <div className="col p-2">
+        {/* Link to the book details page */}
         <Link
           to={`/books/${props.book.bookid}`}
           params={{ id: props.book.bookid }}

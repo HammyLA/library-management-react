@@ -37,6 +37,10 @@ CREATE TABLE Rental (
     FOREIGN KEY (book) REFERENCES Book(bookid)
 );
 
+-- For a fresh database with no items, do not run items below this line.
+
+-- Insert Default items into Book Table
+
 INSERT INTO Book (title, author, genre, description, year_published)
 VALUES
 ('On The Origin Of Species', 'Charles Darwin', 'Educational', 'There''s been a handful of controversial books that have shaken up the very ground in which we build our beliefs on…. and Charles Darwin''s famous ''On the origin of species'' has been like no other. It all started on December 27, 1831, when the young naturalist left Plymouth Harbor aboard the HMS Beagle to spend the next (what turned out to be five long) years gallivanting around the globe conducting research on plants, animals and the environment in which they preside. His adventure turned into one of the greatest discoveries in the history of mankind - the theory of evolution. What Darwin found along his travels, and what he would eventually declare to the scientific community and broader world, was that existing organisms better suited for adaptation to their environment survive, while those that are poorly suited to their environment do not.', 1859),
@@ -55,7 +59,12 @@ VALUES
 ('All Quiet on the Western Front', 'Erich Maria Remarque', 'War', 'All Quiet on the Western Front was written by a German veteran of World War I called Erich Maria Remarque in 1928. The book follows an incredible story of a young unknown soldier that patriotically signed up to the ''glorious war'', and his experience pre, present and post war. This story is a powerful insight into the effects that modern warfare has on the human psyche and a must-read for not only the power of the story, but also, for offering the reader a glimpse into the horror of life in the trenches.', 1928),
 ('Pride and Prejudice', 'Jane Austen', 'Romance', 'Pride and Prejudice was written by Jane Austen in 1813. Mainly falling into the romance novel category, the book follows the character Elizabeth Bennet, and her four sisters, and touches on manners, education, marriage, and money during the Regency era in Great Britain. Back then the importance of marrying for love rather than money or social prestige, wasn''t necessarily valued, which leads to an insightful look into cultural expectations.', 1813),
 ('The Very Hungry Caterpillar', 'Eric Carle', 'Children''s', 'The Very Hungry Caterpillar is a 1969 children''s picture book designed, illustrated, and written by American children''s author and illustrator Eric Carle. The plot follows a very hungry caterpillar that consumes a variety of foods before pupating and becoming a butterfly. It incorporates elements that contribute to early childhood education, including counting, days of the week, and food. It also incorporates a butterfly''s life cycle.', 1969),
-('Nineteen Eighty Four', 'George Orwell', 'Dystopian', 'Set in a dystopian future, the novel presents a society under the total control of a totalitarian regime, led by the omnipresent Big Brother. The protagonist, a low-ranking member of ''the Party'', begins to question the regime and falls in love with a woman, an act of rebellion in a world where independent thought, dissent, and love are prohibited. The novel explores themes of surveillance, censorship, and the manipulation of truth.', 1949);
+('Nineteen Eighty Four', 'George Orwell', 'Dystopian', 'Set in a dystopian future, the novel presents a society under the total control of a totalitarian regime, led by the omnipresent Big Brother. The protagonist, a low-ranking member of ''the Party'', begins to question the regime and falls in love with a woman, an act of rebellion in a world where independent thought, dissent, and love are prohibited. The novel explores themes of surveillance, censorship, and the manipulation of truth.', 1949),
+('The Old Man and the Sea', 'Ernest Hemingway', 'Adventure', 'The old man, his boat, the admiring boy, the sea, a few clouds, two or three fish, a few birds, the great marlin and finally the sharks - those are the ingredients of this famous novella. Stripping out the complications of modern life, Hemingway presents a story of one man''s timeless struggle both with and against the elements. Survival isn''t simply a Darwinian struggle to determine the fittest, but a need to persevere despite challenges and setbacks: to rise to the occasion but also accept that events can turn a success into a failure. It''s the need to go to sleep at the end of a harrowing ordeal with the simple idea that tomorrow you''ll get up and try again. The work of an aging author, The Old Man and the Sea focuses on the realities of growing old and the desire to remain vital and relevant. Much like the old man in the book, Hemingway found himself looking back on his early successes while finding it ever harder to repeat them. As such, his last completed work of fiction was a triumph over his critics, who had basically declared him finished as a novelist. In the middle of a confusing 20th century and with his characteristically economical style, Hemingway makes the battle of this lone fisherman off the coast of Cuba into a poignant story of humanity''s struggle to find meaning.', 1952),
+('Twenty Thousand Leagues Under the Sea', 'Jules Verne', 'Adventure', 'Twenty Thousand Leagues Under the Sea tells the story of marine biologist Pierre Aronnax, his manservant Conseil and harpoonist Ned Land, who - after joining the hunt for a mysterious sea monster – are thrown overboard when the monster attacks and find themselves prisoners of Captain Nemo, probably one of Verne''s most memorable yet elusive characters. On board the Nautilus, a technologically advanced submarine that everyone has mistaken for a sea monster, the three companions get to experience the vast and endlessly fascinating world under the sea. Twenty Thousand Leagues is an adventure tale, political commentary and scientific utopia all in one - and one of Verne''s most successful works. Its first edition sold out within a week. Despite terrible initial English translations and the sometimes academically dry writing style, its appeal has endured, still capturing readers young and old with the excitement of discovering a new world.', 1870);
+
+
+-- Insert Default Items into Member table
 
 INSERT INTO Member (first_name, last_name, email)
 VALUES
@@ -75,6 +84,9 @@ VALUES
 ('Jessabelle', 'Mortensen', 'jessy5554@gmail.com'),
 ('Ben', 'Kalin', 'BennyKalin@gmail.com');
 
+
+-- Insert Default items into Rental Table
+
 INSERT INTO Rental (member, book)
 VALUES
 (1, 1),
@@ -82,13 +94,29 @@ VALUES
 (3, 3),
 (4, 4),
 (5, 5),
-(6, 6),
 (7, 7),
 (8, 8),
 (9, 9),
-(10, 10),
 (11, 11),
 (12, 12),
 (13, 13),
 (14, 14),
 (15, 15);
+
+
+-- Add additional data points for example of overdue items
+
+INSERT INTO Member(first_name, last_name, email)
+VALUES
+('Devin', 'Cliff', 'dcliff@gmail.com'),
+('Dominic', 'Handle', 'domhand@gmail.com'),
+('Giselle', 'Mansour', 'GMansour@yahoo.com'),
+('Albert', 'Christoff', 'ChristoffAlbie@gmail.com');
+
+
+INSERT INTO Rental(member, book, day_of_rental)
+VALUES
+(16, 6, (DATE_SUB(CURRENT_TIMESTAMP, INTERVAL 21 DAY))),
+(17, 10, (DATE_SUB(CURRENT_TIMESTAMP, INTERVAL 17 DAY))),
+(6, 18, (DATE_SUB(CURRENT_TIMESTAMP, INTERVAL 16 DAY))),
+(10, 19, (DATE_SUB(CURRENT_TIMESTAMP, INTERVAL 20 DAY)));
