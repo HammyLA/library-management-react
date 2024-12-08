@@ -7,7 +7,7 @@ function Home() {
       {/* Main row containing the title */}
       <div className="row">
         <h1>
-          <strong>Personal Library Manager</strong>
+          <strong>Library Manager</strong>
         </h1>
       </div>
 
