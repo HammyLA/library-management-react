@@ -12,20 +12,22 @@ Currently, two official plugins are available:
 
 # Setup
 
-MySQL 8.3.4: https://dev.mysql.com/downloads/mysql/8.4.html
+MySQL: https://dev.mysql.com/downloads/installer/
 
-Maven 3.9.9: https://maven.apache.org/download.cgi
+Maven 3.9.9: https://maven.apache.org/download.cgi tutorial: https://phoenixnap.com/kb/install-maven-windows
 
-Java JDK: https://www.oracle.com/java/technologies/downloads/
+Java JDK 21: https://www.oracle.com/java/technologies/downloads/ tutorial: https://www.geeksforgeeks.org/download-and-install-java-development-kit-jdk-on-windows-mac-and-linux/
 
 Nodejs : https://nodejs.org/en/download/package-manager
+
+NOTE: MySQL Shell extension in VSCode can be particularly useful for running SQL setup scripts
 
 Ensure you are able to access MySQL from your terminal, and that you can see versions of Maven, Java, and Node with the -version command in your terminal.
 Look up tutorials for installation if you are having trouble.
 
 Backend
-1. go to target/classes/application.properties, if not included create the application.properties file
-2. The file should be in this format utilizing the location of your database server (this project uses Aiven to source its MySQL database)
+1. go to /backend/src/main/java/com/lib/library_management_react/resources/, if not included create the application.properties file
+2. The application.properties should be in this format utilizing the location of your database server (this project uses Aiven to source its MySQL database)
 
 spring.application.name=library-management-react
 
@@ -35,13 +37,16 @@ spring.datasource.username= {username}
 
 spring.datasource.password= {password}
 
-3. Run schema.sql file located in the same folder
-4. Start the springboot server with command "mvn spring-boot:run" in your IDE terminal, the default port for this server is localhost:8080
+The configuration for this portion in particular can be found in the report paper under "How JDBC is connected to the database". GitHub does not allow me to insert my API keys to the online database for safety purposes, so if accessing from github, take the configuration information from the paper.
+
+3. Run create_schema.sql and initialize_schema.sql file located in the same folder of the application.properties file
+4. Input "mvn clean install" to set up dependencies for the backend.
+5. Start the springboot server with command "mvn spring-boot:run" in your IDE terminal, the default port for this server is localhost:8080
 
 Frontend
 1. Ensure you are in the frontend directory in your IDE terminal
-2. Run the "npm i" command to install dependencies needed to run the application
-3. Start the application with "npm run dev" and use the provided link in a web browser
+2. Input the "npm i" command in the terminal to install dependencies needed to run the application
+3. Start the application with "npm run dev" and use the provided link in the terminal in a web browser
 
 # Acknowledgements
 
